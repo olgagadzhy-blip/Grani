@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Грани Возможностей — Форум предпринимателей</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0A0A0A;
+  --black2: #141414;
+  --black3: #1C1C1C;
+  --white: #FAFAF8;
+  --beige: #E8E0D0;
+  --beige2: #D4C9B5;
+  --beige-dim: #A89880;
+  --teal: #3ABCB0;
+  --teal-dark: #2A9990;
+  --teal-dim: #1D6E68;
+  --teal-pale: rgba(58,188,176,0.12);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 24px;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(58,188,176,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 90%, rgba(58,188,176,0.07) 0%, transparent 50%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(58,188,176,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58,188,176,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+}
+
+.hero-tag {
+  display: inline-block;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.2s forwards;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(58px, 10vw, 110px);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--white);
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--teal);
+  display: block;
+}
+
+.hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--beige-dim);
+  margin: 24px 0 50px;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-pills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.pill {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--beige);
+  letter-spacing: 0.5px;
+}
+
+.pill span { color: var(--teal); margin-right: 8px; }
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1s forwards;
+}
+
+.btn-main {
+  background: var(--teal);
+  color: var(--black);
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 18px 44px;
+  display: inline-block;
+  transition: all 0.3s;
+  border: 2px solid var(--teal);
+}
+
+.btn-main:hover {
+  background: transparent;
+  color: var(--teal);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--beige);
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 18px 44px;
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--teal);
+  padding: 20px 24px;
+}
+
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.stat {
+  text-align: center;
+  padding: 12px 0;
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1;
+  display: block;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.6);
+  display: block;
+  margin-top: 4px;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 100px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: 100px 24px;
+  background: var(--black2);
+}
+
+.section-full .section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.title em { font-style: italic; color: var(--teal); }
+
+.teal-bar {
+  width: 48px;
+  height: 3px;
+  background: var(--teal);
+  margin-bottom: 50px;
+}
+
+/* ── PROGRAM ── */
+.floors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.floor-card {
+  background: var(--black3);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.floor-header {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.floor-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--teal);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.floor-desc {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--beige-dim);
+}
+
+.floor-body {
+  padding: 20px 28px 28px;
+}
+
+.time-slot {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: flex-start;
+}
+
+.time-slot:last-child { border-bottom: none; }
+
+.ts-time {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--teal);
+  min-width: 44px;
+  padding-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+.ts-text {
+  font-size: 13px;
+  color: var(--beige);
+  line-height: 1.5;
+}
+
+.ts-text strong {
+  display: block;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.ts-special {
+  background: var(--teal-pale);
+  border-left: 2px solid var(--teal);
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-bottom: none !important;
+}
+
+.ts-special .ts-text {
+  color: var(--teal);
+  font-weight: 500;
+}
+
+/* ── INCLUDES ── */
+.includes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.include-card {
+  background: var(--black);
+  padding: 36px 28px;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.include-card:hover {
+  border-color: var(--teal);
+  background: var(--black3);
+}
+
+.inc-icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.inc-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.inc-text {
+  font-size: 13px;
+  color: var(--beige-dim);
+  line-height: 1.7;
+}
+
+/* ── TARIFFS ── */
+.tariffs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.tariff {
+  background: var(--black2);
+  padding: 44px 32px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.tariff:hover { transform: translateY(-4px); }
+
+.tariff.hot {
+  background: var(--black3);
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
+}
+
+.tariff-badge {
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--teal);
+  color: var(--black);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  white-space: nowrap;
+}
+
+.t-name {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.t-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.t-price sup {
+  font-size: 20px;
+  vertical-align: top;
+  margin-top: 12px;
+  display: inline-block;
+}
+
+.t-spots {
+  font-size: 11px;
+  color: var(--beige-dim);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 28px;
+}
+
+.t-features {
+  list-style: none;
+  margin-bottom: 36px;
+}
+
+.t-features li {
+  font-size: 13px;
+  color: var(--beige-dim);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.t-features li::before {
+  content: '→';
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.t-features li:last-child { border-bottom: none; }
+
+.btn-tariff {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px;
+  border: 2px solid rgba(58,188,176,0.4);
+  color: var(--teal);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-tariff:hover,
+.tariff.hot .btn-tariff {
+  background: var(--teal);
+  color: var(--black);
+  border-color: var(--teal);
+}
+
+.discount-strip {
+  margin-top: 32px;
+  background: var(--teal-pale);
+  border: 1px solid rgba(58,188,176,0.25);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.discount-strip .icon { font-size: 24px; flex-shrink: 0; }
+.discount-strip p { font-size: 14px; color: var(--beige); line-height: 1.6; }
+.discount-strip strong { color: var(--teal); }
+
+/* ── CONTACTS & PAYMENT ── */
+.contact-section {
+  padding: 100px 24px;
+  background: var(--black2);
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 50px;
+}
+
+.contact-card {
+  background: var(--black3);
+  padding: 40px 36px;
+}
+
+.contact-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.contact-card p {
+  font-size: 13px;
+  color: var(--beige-dim);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.contact-link:last-child { border-bottom: none; }
+
+.contact-link:hover .cl-text { color: var(--teal); }
+
+.cl-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--teal-pale);
+  border: 1px solid rgba(58,188,176,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.cl-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--beige-dim);
+  display: block;
+}
+
+.cl-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  display: block;
+  transition: color 0.2s;
+}
+
+/* Placeholder style — edit these */
+.placeholder-note {
+  background: rgba(58,188,176,0.08);
+  border: 1px dashed rgba(58,188,176,0.4);
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--teal);
+  letter-spacing: 0.5px;
+  margin-top: 16px;
+  border-radius: 2px;
+}
+
+/* ── FOR WHOM ── */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.tag {
+  padding: 10px 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: var(--beige-dim);
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.tag:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* ── CTA ── */
+.cta-section {
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 110%, rgba(58,188,176,0.13) 0%, transparent 60%),
+    var(--black);
+}
+
+.cta-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 7vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.cta-title em { font-style: italic; color: var(--teal); }
+
+.cta-sub {
+  font-size: 15px;
+  color: var(--beige-dim);
+  margin-bottom: 50px;
+  line-height: 1.8;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black2);
+  border-top: 1px solid rgba(58,188,176,0.1);
+  padding: 36px 24px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--teal);
+}
+
+.footer-info {
+  font-size: 12px;
+  color: var(--beige-dim);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.footer-addr {
+  font-size: 12px;
+  color: var(--teal-dim);
+  letter-spacing: 1px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .floors,
+  .includes-grid,
+  .tariffs-grid,
+  .contact-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.15); }
+  .stat:nth-child(2n) { border-right: none; }
+}
+
+@media (max-width: 560px) {
+  .stats-inner { grid-template-columns: 1fr 1fr; }
+  .hero-pills { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Форум предпринимателей Крыма</div>
+    <h1 class="hero-title">
+      Грани
+      <em>Возможностей</em>
+    </h1>
+    <p class="hero-sub">Один день. Сотни знакомств. Новый уровень.</p>
+    <div class="hero-pills">
+      <div class="pill"><span>📅</span>24 апреля, пятница</div>
+      <div class="pill"><span>⏰</span>14:00 — 19:00</div>
+      <div class="pill"><span>📍</span>Симферополь, Лесхозная 3Б</div>
+      <div class="pill"><span>🎫</span>от 2 500 ₽</div>
+    </div>
+    <div class="hero-cta">
+      <a href="#tariffs" class="btn-main">Купить билет</a>
+      <a href="#program" class="btn-outline">Программа</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <span class="stat-num">100+</span>
+      <span class="stat-label">Предпринимателей</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">Спикеров</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Площадки</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">5ч</span>
+      <span class="stat-label">Нетворкинга</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<div class="section-full" id="program">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="label">Программа дня</span>
+      <h2 class="title">Три этажа.<br><em>Один день.</em></h2>
+      <div class="teal-bar"></div>
+      <p style="font-size:14px; color:var(--beige-dim); margin-bottom:40px; max-width:600px;">
+        Регистрация с <strong style="color:var(--white)">13:30</strong>.
+        Старт в <strong style="color:var(--white)">14:00</strong>.
+        Каждый спикер — 30 минут + нетворкинг между выступлениями.
+        Выбирай этаж сам.
+      </p>
+    </div>
+
+    <div class="floors reveal">
+
+      <!-- 2 ЭТАЖ -->
+      <div class="floor-card">
+        <div class="floor-header" style="border-top: 3px solid var(--teal);">
+          <span class="floor-name">Ресурс</span>
+          <span class="floor-desc">2 этаж · Главная сцена · до 80 чел.</span>
+        </div>
+        <div class="floor-body">
+          <div class="time-slot">
+            <span class="ts-time">13:30</span>
+            <span class="ts-text">Регистрация, приветственный кофе</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">14:00</span>
+            <span class="ts-text"><strong>Открытие форума</strong>Ольга — о программе дня, о ценности живого нетворкинга</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">14:20</span>
+            <span class="ts-text"><strong>Спикер 1</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">14:50</span>
+            <span class="ts-text">🤝 Нетворкинг-пауза · 15 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">15:05</span>
+            <span class="ts-text"><strong>Спикер 2</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">15:35</span>
+            <span class="ts-text">☕ Кофе-брейк + нетворкинг · 20 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">15:55</span>
+            <span class="ts-text"><strong>Спикер 3</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">16:25</span>
+            <span class="ts-text">🤝 Нетворкинг-пауза · 15 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">16:40</span>
+            <span class="ts-text"><strong>Спикер 4</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">17:10</span>
+            <span class="ts-text">🥂 Фуршет + шампанское · 25 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">17:35</span>
+            <span class="ts-text"><strong>Ольга — ключевое выступление</strong>О трансформации, о тренинге 1–3 мая · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">18:05</span>
+            <span class="ts-text">🤝 Финальный нетворкинг · 20 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">18:30</span>
+            <span class="ts-text"><strong>🎁 Розыгрыш подарков</strong>Сертификаты, призы, сюрпризы</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">19:00</span>
+            <span class="ts-text"><strong>Закрытие форума</strong>Финальное слово</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 ЭТАЖ -->
+      <div class="floor-card">
+        <div class="floor-header" style="border-top: 3px solid var(--beige2);">
+          <span class="floor-name" style="color:var(--beige2);">Поток</span>
+          <span class="floor-desc">3 этаж · Камерный зал · до 40 чел.</span>
+        </div>
+        <div class="floor-body">
+          <div class="time-slot">
+            <span class="ts-time">14:00</span>
+            <span class="ts-text"><strong>Спикер 5</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">14:30</span>
+            <span class="ts-text">🤝 Нетворкинг-пауза · 15 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">14:45</span>
+            <span class="ts-text"><strong>Спикер 6</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">15:15</span>
+            <span class="ts-text">🤝 Нетворкинг-пауза · 15 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">15:30</span>
+            <span class="ts-text"><strong>Спикер 7</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">16:00</span>
+            <span class="ts-text">☕ Кофе-брейк + нетворкинг · 20 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">16:20</span>
+            <span class="ts-text"><strong>Спикер 8</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">16:50</span>
+            <span class="ts-text">🤝 Нетворкинг-пауза · 15 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">17:05</span>
+            <span class="ts-text"><strong>Спикер 9</strong>Выступление · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">17:35</span>
+            <span class="ts-text">🤝 Нетворкинг + свободное общение</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">18:00</span>
+            <span class="ts-text"><strong>Спикер 10</strong>Финальное выступление · 30 мин</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">18:30</span>
+            <span class="ts-text">↓ Все спускаются на розыгрыш</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 ЭТАЖ -->
+      <div class="floor-card">
+        <div class="floor-header" style="border-top: 3px solid rgba(58,188,176,0.4);">
+          <span class="floor-name" style="color:rgba(255,255,255,0.7);">Момент</span>
+          <span class="floor-desc">4 этаж · Зона перезагрузки · весь день</span>
+        </div>
+        <div class="floor-body">
+          <div class="time-slot">
+            <span class="ts-time">14:00</span>
+            <span class="ts-text">Открытие зоны. Гамаки, мешки, ковры, подушки — всё готово</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">14:00</span>
+            <span class="ts-text"><strong>Спикер 11</strong>Тема: [добавь тему] · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">14:30</span>
+            <span class="ts-text">🤝 Нетворкинг в атмосфере</span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">15:00</span>
+            <span class="ts-text"><strong>Спикер 12</strong>Тема: [добавь тему] · 30 мин</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">16:00</span>
+            <span class="ts-text">🪷 Сеанс поющих чаш · 20–25 мин<br><span style="font-size:11px; color:var(--beige-dim);">Тишина. Восстановление. Перезагрузка.</span></span>
+          </div>
+          <div class="time-slot">
+            <span class="ts-time">16:30</span>
+            <span class="ts-text">Свободное время — гамаки, общение, отдых</span>
+          </div>
+          <div class="time-slot ts-special">
+            <span class="ts-time">19:00</span>
+            <span class="ts-text">🪷 Завершающий сеанс поющих чаш<br><span style="font-size:11px; color:var(--beige-dim);">Финал дня. Точка. Момент.</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- INCLUDES -->
+<div class="section-full" style="background:var(--black);">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="label">Что включено</span>
+      <h2 class="title">Всё уже<br><em>в билете.</em></h2>
+      <div class="teal-bar"></div>
+    </div>
+    <div class="includes-grid reveal">
+      <div class="include-card">
+        <span class="inc-icon">🎤</span>
+        <div class="inc-title">12 спикеров</div>
+        <p class="inc-text">Три параллельных потока. Сам выбираешь что слушать и когда.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">🤝</span>
+        <div class="inc-title">Нетворкинг</div>
+        <p class="inc-text">Организованные паузы между спикерами. Знакомишься системно, не случайно.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">🥂</span>
+        <div class="inc-title">Фуршет и шампанское</div>
+        <p class="inc-text">Насыщенный фуршет, кофе-брейк и шампанское. Всё включено в билет.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">📓</span>
+        <div class="inc-title">Рабочая тетрадь</div>
+        <p class="inc-text">Контакты спикеров, страницы для нетворкинга, квест, купон на тренинг.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">🎁</span>
+        <div class="inc-title">Розыгрыш в 18:30</div>
+        <p class="inc-text">Ценные призы и сертификаты. Участвуют все гости форума.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">🎬</span>
+        <div class="inc-title">Фото и видео</div>
+        <p class="inc-text">Профессиональная съёмка весь день. Получишь контент для соцсетей.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">🪷</span>
+        <div class="inc-title">Поющие чаши</div>
+        <p class="inc-text">Два сеанса: в 16:00 и в 19:00. Восстановление прямо в течение дня.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">🛋️</span>
+        <div class="inc-title">Зона «Момент»</div>
+        <p class="inc-text">4 этаж: гамаки, мешки для сидения, ковры, подушки. Работает весь день.</p>
+      </div>
+      <div class="include-card">
+        <span class="inc-icon">🛍️</span>
+        <div class="inc-title">Ярмарка товаров</div>
+        <p class="inc-text">Продукты и услуги крымских предпринимателей — 1 этаж, весь день.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TARIFFS -->
+<div class="section-full" id="tariffs" style="background:var(--black2);">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="label">Участие</span>
+      <h2 class="title">Выбери<br><em>свой формат.</em></h2>
+      <div class="teal-bar"></div>
+    </div>
+    <div class="tariffs-grid reveal">
+      <div class="tariff">
+        <span class="t-name">Стандарт</span>
+        <div class="t-price"><sup>₽</sup>2 500</div>
+        <span class="t-spots">70 мест</span>
+        <ul class="t-features">
+          <li>Участие в форуме · все 3 этажа</li>
+          <li>Фуршет + шампанское + кофе</li>
+          <li>Рабочая тетрадь участника</li>
+          <li>Фото- и видеосъёмка</li>
+          <li>Розыгрыш подарков</li>
+        </ul>
+        <a href="#contacts" class="btn-tariff">Забронировать</a>
+      </div>
+      <div class="tariff hot">
+        <div class="tariff-badge">Популярный</div>
+        <span class="t-name">Бизнес</span>
+        <div class="t-price"><sup>₽</sup>4 500</div>
+        <span class="t-spots">20 мест</span>
+        <ul class="t-features">
+          <li>Всё из тарифа Стандарт</li>
+          <li>Твоя полиграфия на каждом кресле</li>
+          <li>Рекламный баннер в зоне нетворкинга</li>
+          <li>Упоминание в соцсетях форума</li>
+        </ul>
+        <a href="#contacts" class="btn-tariff">Забронировать</a>
+      </div>
+      <div class="tariff">
+        <span class="t-name">Премиум · Спикер</span>
+        <div class="t-price"><sup>₽</sup>7 000</div>
+        <span class="t-spots">6 мест</span>
+        <ul class="t-features">
+          <li>Всё из тарифа Бизнес</li>
+          <li>30 минут на сцене перед залом</li>
+          <li>Отдельный анонс-пост о тебе</li>
+          <li>Запись твоего выступления</li>
+        </ul>
+        <a href="#contacts" class="btn-tariff">Забронировать</a>
+      </div>
+    </div>
+    <div class="discount-strip reveal">
+      <span class="icon">🎁</span>
+      <p><strong>Скидка 500 ₽</strong> на любой тариф — за репост анонса в сторис (Telegram или ВКонтакте). Покажи скриншот при регистрации.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACTS & PAYMENT -->
+<div class="contact-section" id="contacts">
+  <div class="contact-inner">
+    <div class="reveal">
+      <span class="label">Регистрация и оплата</span>
+      <h2 class="title">Как<br><em>попасть.</em></h2>
+      <div class="teal-bar"></div>
+    </div>
+    <div class="contact-grid reveal">
+
+      <!-- LEFT: CONTACTS -->
+      <div class="contact-card">
+        <h3>Написать и забронировать</h3>
+        <p>Напиши нам — и мы ответим в течение нескольких минут, подтвердим место и пришлём реквизиты для оплаты.</p>
+
+        <!-- ✏️ ЗАМЕНИ ССЫЛКИ НИЖЕ НА СВОИ -->
+        <a href="https://t.me/ТВОЙ_TELEGRAM" class="contact-link">
+          <div class="cl-icon">✈️</div>
+          <div>
+            <span class="cl-label">Telegram</span>
+            <span class="cl-text">@ТВОЙ_ЮЗЕРНЕЙМ</span>
+          </div>
+        </a>
+        <a href="https://wa.me/7ХХХХХХХХХХ" class="contact-link">
+          <div class="cl-icon">💬</div>
+          <div>
+            <span class="cl-label">WhatsApp</span>
+            <span class="cl-text">+7 (ХХХ) ХХХ-ХХ-ХХ</span>
+          </div>
+        </a>
+        <a href="tel:+7ХХХХХХХХХХ" class="contact-link">
+          <div class="cl-icon">📞</div>
+          <div>
+            <span class="cl-label">Телефон</span>
+            <span class="cl-text">+7 (ХХХ) ХХХ-ХХ-ХХ</span>
+          </div>
+        </a>
+        <div class="placeholder-note">
+          ✏️ Замени юзернейм, номер телефона и ссылки на свои
+        </div>
+      </div>
+
+      <!-- RIGHT: PAYMENT -->
+      <div class="contact-card">
+        <h3>Оплата</h3>
+        <p>После бронирования мы пришлём реквизиты. Оплата по СБП или переводом на карту. Место фиксируется после оплаты.</p>
+
+        <!-- ✏️ ДОБАВЬ ССЫЛКУ НА ФОРМУ / ОПЛАТУ -->
+        <a href="ССЫЛКА_НА_ФОРМУ_ИЛИ_ОПЛАТУ" class="contact-link">
+          <div class="cl-icon">💳</div>
+          <div>
+            <span class="cl-label">Онлайн-оплата</span>
+            <span class="cl-text">Перейти к оплате →</span>
+          </div>
+        </a>
+        <a href="ССЫЛКА_НА_ФОРМУ_РЕГИСТРАЦИИ" class="contact-link">
+          <div class="cl-icon">📋</div>
+          <div>
+            <span class="cl-label">Форма регистрации</span>
+            <span class="cl-text">Заполнить анкету →</span>
+          </div>
+        </a>
+
+        <div style="margin-top:24px; padding:20px; background:var(--teal-pale); border-left:3px solid var(--teal);">
+          <div style="font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:8px;">Место проведения</div>
+          <div style="font-size:14px; color:var(--beige); line-height:1.7;">
+            📍 Симферополь, Лесхозная 3Б<br>
+            Центр «Грани Жизни»<br>
+            24 апреля · 13:30 — 19:00
+          </div>
+        </div>
+        <div class="placeholder-note">
+          ✏️ Добавь ссылку на форму оплаты (Тинькофф, ЮMoney, Google Forms и т.д.)
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOR WHOM -->
+<div class="section-full" style="background:var(--black);">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="label">Для кого</span>
+      <h2 class="title">Предприниматели.<br><em>Практики. Созидатели.</em></h2>
+      <div class="teal-bar"></div>
+    </div>
+    <div class="tags-cloud reveal">
+      <span class="tag">Производство</span>
+      <span class="tag">Строительство</span>
+      <span class="tag">Торговля и маркетплейсы</span>
+      <span class="tag">Маркетинг и реклама</span>
+      <span class="tag">IT и технологии</span>
+      <span class="tag">Бьюти-индустрия</span>
+      <span class="tag">Рестораны и кафе</span>
+      <span class="tag">Туризм и гостеприимство</span>
+      <span class="tag">B2B услуги</span>
+      <span class="tag">Образование</span>
+      <span class="tag">Консалтинг</span>
+      <span class="tag">Медицина и здоровье</span>
+      <span class="tag">Недвижимость</span>
+      <span class="tag">Психология и коучинг</span>
+      <span class="tag">Творчество и дизайн</span>
+      <span class="tag">Финансы</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Место ограничено.<br><em>Твоё — пока есть.</em></h2>
+    <p class="cta-sub">
+      24 апреля · Симферополь · Лесхозная 3Б<br>
+      Центр «Грани Жизни» · 13:30 — 19:00
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="#contacts" class="btn-main">Купить билет</a>
+      <a href="#program" class="btn-outline">Смотреть программу</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Грани Жизни</div>
+    <div class="footer-info">
+      Форум предпринимателей «Грани Возможностей»<br>
+      24 апреля 2026 · 13:30–19:00
+    </div>
+    <div class="footer-addr">📍 Симферополь, Лесхозная 3Б</div>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
