@@ -1,0 +1,1036 @@
+[grani-forum.html](https://github.com/user-attachments/files/26853702/grani-forum.html)
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Грани Возможностей — Форум предпринимателей</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96B;
+    --gold-dim: #8B6914;
+    --dark: #0D0D0D;
+    --dark2: #151515;
+    --dark3: #1E1C18;
+    --text: #F0EDE6;
+    --text-muted: #A89E8A;
+    --white: #FDFBF6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  }
+
+  .hero-lines {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 79px,
+        rgba(201,168,76,0.04) 79px,
+        rgba(201,168,76,0.04) 80px
+      );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: clamp(52px, 9vw, 96px);
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.6s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.8s forwards;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+
+  .hero-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .hero-meta-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    align-self: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 48px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1s forwards;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--dark); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.4s forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .gold-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 50px;
+  }
+
+  /* ── WHY ── */
+  .why-section {
+    background: var(--dark2);
+    max-width: 100%;
+    padding: 100px 20px;
+  }
+
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .why-item {
+    background: var(--dark3);
+    padding: 40px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .why-item:hover { border-color: var(--gold); }
+
+  .why-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .why-item h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .why-item p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  /* ── PROGRAM ── */
+  .program-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .program-block {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .program-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  .program-block:hover { border-color: rgba(201,168,76,0.5); }
+
+  .floor-badge {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .program-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .program-list {
+    list-style: none;
+  }
+
+  .program-list li {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    gap: 12px;
+    line-height: 1.5;
+  }
+
+  .program-list li:last-child { border-bottom: none; }
+
+  .program-list li .time {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+    padding-top: 1px;
+    min-width: 52px;
+  }
+
+  /* ── WHAT'S INCLUDED ── */
+  .includes-section {
+    background: var(--dark2);
+    max-width: 100%;
+    padding: 100px 20px;
+  }
+
+  .includes-inner { max-width: 1100px; margin: 0 auto; }
+
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .include-item {
+    background: var(--dark);
+    padding: 36px 28px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .include-item:hover { background: var(--dark3); }
+
+  .include-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .include-item h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .include-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── TARIFFS ── */
+  .tariffs-section {
+    padding: 100px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .tariffs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .tariff-card {
+    background: var(--dark2);
+    padding: 48px 36px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .tariff-card:hover { transform: translateY(-4px); }
+
+  .tariff-card.featured {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.4);
+  }
+
+  .tariff-card.featured::before {
+    content: 'Популярный';
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    white-space: nowrap;
+  }
+
+  .tariff-name {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .tariff-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .tariff-price sup {
+    font-size: 22px;
+    vertical-align: top;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  .tariff-spots {
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  .tariff-features {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  .tariff-features li {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .tariff-features li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .tariff-features li:last-child { border-bottom: none; }
+
+  .btn-tariff {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-tariff:hover, .tariff-card.featured .btn-tariff {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .discount-note {
+    margin-top: 40px;
+    padding: 24px 32px;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .discount-note .icon { font-size: 28px; flex-shrink: 0; }
+
+  .discount-note p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .discount-note strong { color: var(--gold); }
+
+  /* ── FOR WHOM ── */
+  .forwhom-section {
+    background: var(--dark2);
+    max-width: 100%;
+    padding: 100px 20px;
+  }
+
+  .forwhom-inner { max-width: 1100px; margin: 0 auto; }
+
+  .niches-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 50px;
+  }
+
+  .niche-tag {
+    padding: 12px 24px;
+    border: 1px solid rgba(201,168,76,0.25);
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .niche-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    max-width: 100%;
+    padding: 120px 20px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.1) 0%, transparent 65%),
+      var(--dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 79px,
+        rgba(201,168,76,0.03) 79px,
+        rgba(201,168,76,0.03) 80px
+      );
+  }
+
+  .cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .cta-title em { font-style: italic; color: var(--gold); }
+
+  .cta-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 50px;
+    line-height: 1.8;
+  }
+
+  .cta-contact {
+    margin-top: 40px;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  .cta-contact a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .footer-info {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  .footer-address {
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 1px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .why-grid,
+    .program-grid,
+    .includes-grid,
+    .tariffs-grid { grid-template-columns: 1fr; }
+
+    .hero-meta { gap: 20px; }
+    .hero-divider { display: none; }
+
+    .tariff-card { padding: 36px 24px; }
+
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Форум предпринимателей Крыма</span>
+    <h1 class="hero-title">Грани<br><em>Возможностей</em></h1>
+    <p class="hero-subtitle">Один день. Сотни знакомств. Новый уровень.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Дата</span>
+        <span class="value">24 апреля</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="label">Время</span>
+        <span class="value">12:00 — 19:00</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="label">Место</span>
+        <span class="value">Симферополь</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span class="label">Участников</span>
+        <span class="value">100+</span>
+      </div>
+    </div>
+    <a href="#tariffs" class="btn-primary"><span>Занять место →</span></a>
+  </div>
+  <div class="scroll-hint">
+    <span>Листай</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<div class="why-section">
+  <div class="why-inner">
+    <div class="reveal">
+      <span class="section-label">Почему это важно</span>
+      <h2 class="section-title">Реклама дорожает.<br><em>Связи — нет.</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-number">01</div>
+        <h3>Живые знакомства</h3>
+        <p>За один день — десятки нужных контактов. Партнёры, клиенты, подрядчики. Не в ленте, а лицом к лицу.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-number">02</div>
+        <h3>Практические знания</h3>
+        <p>12 спикеров-практиков. Только реальный опыт и конкретные инструменты — без воды и теории.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-number">03</div>
+        <h3>Окружение, которое двигает</h3>
+        <p>Среда решает всё. Один разговор с нужным человеком меняет направление бизнеса быстрее, чем год работы в одиночку.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-number">04</div>
+        <h3>Личный и деловой бренд</h3>
+        <p>Фото- и видеосъёмка, контент для соцсетей. Ты был здесь — и это видно.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<section>
+  <div class="reveal">
+    <span class="section-label">Программа дня</span>
+    <h2 class="section-title">7 часов.<br><em>Четыре этажа.</em></h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="program-grid">
+    <div class="program-block reveal">
+      <span class="floor-badge">2 этаж · Главная сцена</span>
+      <h3>Основной поток</h3>
+      <ul class="program-list">
+        <li><span class="time">11:30</span>Регистрация и приветственный кофе</li>
+        <li><span class="time">12:00</span>Открытие форума</li>
+        <li><span class="time">12:20</span>Спикер 1 — бизнес-тема</li>
+        <li><span class="time">13:00</span>Спикер 2 — маркетинг и продажи</li>
+        <li><span class="time">13:40</span>☕ Кофе-брейк + нетворкинг</li>
+        <li><span class="time">14:10</span>Спикер 3 — психология роста</li>
+        <li><span class="time">14:50</span>Ключевое выступление</li>
+        <li><span class="time">15:30</span>🥂 Фуршет и шампанское</li>
+        <li><span class="time">16:00</span>Нетворкинг-квест</li>
+        <li><span class="time">16:40</span>Розыгрыш подарков</li>
+        <li><span class="time">18:30</span>Закрытие форума</li>
+      </ul>
+    </div>
+    <div class="program-block reveal">
+      <span class="floor-badge">3 этаж · Параллельный поток</span>
+      <h3>Камерный формат</h3>
+      <ul class="program-list">
+        <li><span class="time">13:00</span>Спикер 4 — тема на выбор</li>
+        <li><span class="time">14:10</span>Спикер 5 — практикум</li>
+        <li><span class="time">15:00</span>Мастермайнд: разбор кейсов</li>
+        <li><span class="time">16:00</span>Открытая дискуссия</li>
+      </ul>
+      <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(201,168,76,0.15);">
+        <span class="floor-badge">4 этаж · Зона перезагрузки</span>
+        <h3>Отдых и восстановление</h3>
+        <ul class="program-list">
+          <li><span class="time">13:40</span>Поющие чаши — сеанс 20 мин</li>
+          <li><span class="time">15:30</span>Поющие чаши — второй сеанс</li>
+          <li>Гамаки, мешки для сидения, ковры — работает весь день</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+<div class="includes-section">
+  <div class="includes-inner">
+    <div class="reveal">
+      <span class="section-label">Что включено</span>
+      <h2 class="section-title">Всё уже<br><em>в билете.</em></h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="includes-grid">
+      <div class="include-item reveal">
+        <span class="include-icon">🎤</span>
+        <h4>12 спикеров</h4>
+        <p>Два параллельных потока. Выбираешь сам, что слушать.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">🤝</span>
+        <h4>Нетворкинг</h4>
+        <p>Организованный формат знакомств. Не придётся «заводить разговоры» с нуля.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">🥂</span>
+        <h4>Фуршет и шампанское</h4>
+        <p>Насыщенный фуршет, кофе-брейк и бокал шампанского.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">📓</span>
+        <h4>Рабочая тетрадь</h4>
+        <p>Контакты спикеров, нетворкинг-страницы, квест, купон на тренинг.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">🎁</span>
+        <h4>Розыгрыш подарков</h4>
+        <p>Ценные призы для участников. В том числе сертификат на тренинг.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">🎬</span>
+        <h4>Фото и видео</h4>
+        <p>Профессиональная съёмка весь день. Контент для твоих соцсетей.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">🛍️</span>
+        <h4>Ярмарка товаров</h4>
+        <p>Продукты и услуги крымских предпринимателей — на первом этаже.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">🎵</span>
+        <h4>Музыка и игры</h4>
+        <p>Живая атмосфера, музыкальные паузы, энергетические игры.</p>
+      </div>
+      <div class="include-item reveal">
+        <span class="include-icon">🪷</span>
+        <h4>Зона перезагрузки</h4>
+        <p>Гамаки, поющие чаши, мешки для сидения. Восстановление в перерывах.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TARIFFS -->
+<div class="tariffs-section" id="tariffs">
+  <div class="reveal">
+    <span class="section-label">Участие</span>
+    <h2 class="section-title">Выбери<br><em>свой формат.</em></h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="tariffs-grid">
+    <!-- STANDARD -->
+    <div class="tariff-card reveal">
+      <span class="tariff-name">Стандарт</span>
+      <div class="tariff-price"><sup>₽</sup>2 500</div>
+      <span class="tariff-spots">70 мест</span>
+      <ul class="tariff-features">
+        <li>Участие в форуме</li>
+        <li>Доступ ко всем этажам</li>
+        <li>Фуршет + шампанское + кофе</li>
+        <li>Рабочая тетрадь участника</li>
+        <li>Фото- и видеосъёмка</li>
+        <li>Розыгрыш подарков</li>
+      </ul>
+      <a href="#contact" class="btn-tariff">Забронировать</a>
+    </div>
+    <!-- BUSINESS -->
+    <div class="tariff-card featured reveal">
+      <span class="tariff-name">Бизнес</span>
+      <div class="tariff-price"><sup>₽</sup>4 500</div>
+      <span class="tariff-spots">20 мест</span>
+      <ul class="tariff-features">
+        <li>Всё из тарифа Стандарт</li>
+        <li>Твоя полиграфия на каждом кресле</li>
+        <li>Рекламный баннер в зоне нетворкинга</li>
+        <li>Упоминание в соцсетях форума</li>
+      </ul>
+      <a href="#contact" class="btn-tariff">Забронировать</a>
+    </div>
+    <!-- PREMIUM -->
+    <div class="tariff-card reveal">
+      <span class="tariff-name">Премиум · Спикер</span>
+      <div class="tariff-price"><sup>₽</sup>7 000</div>
+      <span class="tariff-spots">6 мест</span>
+      <ul class="tariff-features">
+        <li>Всё из тарифа Бизнес</li>
+        <li>25 минут на сцене перед залом</li>
+        <li>Отдельный анонс-пост о тебе</li>
+        <li>Запись твоего выступления</li>
+      </ul>
+      <a href="#contact" class="btn-tariff">Забронировать</a>
+    </div>
+  </div>
+  <div class="discount-note reveal">
+    <span class="icon">🎁</span>
+    <p><strong>Скидка 500 ₽</strong> на любой тариф — за репост анонса в сторис (Telegram или ВКонтакте). Покажи скриншот при регистрации.</p>
+  </div>
+</div>
+
+<!-- FOR WHOM -->
+<div class="forwhom-section">
+  <div class="forwhom-inner">
+    <div class="reveal">
+      <span class="section-label">Для кого</span>
+      <h2 class="section-title">Предприниматели.<br><em>Практики. Созидатели.</em></h2>
+      <div class="gold-line"></div>
+      <p style="font-size:15px; color: var(--text-muted); line-height:1.8; max-width:600px;">
+        Форум для тех, кто строит, продаёт и хочет расти.
+        Малый и средний бизнес всех сфер.
+      </p>
+    </div>
+    <div class="niches-grid">
+      <span class="niche-tag">Производство</span>
+      <span class="niche-tag">Строительство</span>
+      <span class="niche-tag">Торговля и маркетплейсы</span>
+      <span class="niche-tag">Маркетинг и реклама</span>
+      <span class="niche-tag">IT и технологии</span>
+      <span class="niche-tag">Бьюти индустрия</span>
+      <span class="niche-tag">Рестораны и кафе</span>
+      <span class="niche-tag">Туризм и гостеприимство</span>
+      <span class="niche-tag">B2B услуги</span>
+      <span class="niche-tag">Образование</span>
+      <span class="niche-tag">Консалтинг</span>
+      <span class="niche-tag">Медицина и здоровье</span>
+      <span class="niche-tag">Недвижимость</span>
+      <span class="niche-tag">Психология и коучинг</span>
+      <span class="niche-tag">Творчество и дизайн</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Место ограничено.<br><em>Твоё — пока есть.</em></h2>
+    <p class="cta-sub">
+      24 апреля · Симферополь · Лесхозная 3Б<br>
+      Центр «Грани Жизни» · 12:00–19:00
+    </p>
+    <a href="https://t.me/ВАША_ССЫЛКА" class="btn-primary" style="margin-bottom:16px;"><span>Написать и забронировать →</span></a>
+    <p class="cta-contact">
+      Вопросы и бронирование: <a href="https://t.me/ВАША_ССЫЛКА">@ВАШИ_КОНТАКТЫ</a>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Грани Жизни</div>
+    <div class="footer-info">
+      Форум предпринимателей «Грани Возможностей»<br>
+      24 апреля 2025 · 12:00–19:00
+    </div>
+    <div class="footer-address">📍 Симферополь, Лесхозная 3Б</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
