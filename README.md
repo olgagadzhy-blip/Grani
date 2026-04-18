@@ -734,7 +734,7 @@
       <div class="hero-divider"></div>
       <div class="hero-meta-item">
         <span class="label">Время</span>
-        <span class="value">12:00 — 19:00</span>
+        <span class="value">14:00 — 19:00</span>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-meta-item">
@@ -772,7 +772,7 @@
       <div class="why-item reveal">
         <div class="why-number">02</div>
         <h3>Практические знания</h3>
-        <p>12 спикеров-практиков. Только реальный опыт и конкретные инструменты — без воды и теории.</p>
+        <p>12 спикеров-практиков. Только реальный опыт и конкретные инструменты — без воды, теории и эзотерики.</p>
       </div>
       <div class="why-item reveal">
         <div class="why-number">03</div>
@@ -792,7 +792,7 @@
 <section>
   <div class="reveal">
     <span class="section-label">Программа дня</span>
-    <h2 class="section-title">7 часов.<br><em>Четыре этажа.</em></h2>
+    <h2 class="section-title">5 часов.<br><em>Четыре этажа.</em></h2>
     <div class="gold-line"></div>
   </div>
   <div class="program-grid">
@@ -923,6 +923,7 @@
       <span class="tariff-spots">20 мест</span>
       <ul class="tariff-features">
         <li>Всё из тарифа Стандарт</li>
+        <li> + 1 билет тарифа стандарт, в подарок</li>
         <li>Твоя полиграфия на каждом кресле</li>
         <li>Рекламный баннер в зоне нетворкинга</li>
         <li>Упоминание в соцсетях форума</li>
@@ -987,7 +988,7 @@
     <h2 class="cta-title">Место ограничено.<br><em>Твоё — пока есть.</em></h2>
     <p class="cta-sub">
       24 апреля · Симферополь · Лесхозная 3Б<br>
-      Центр «Грани Жизни» · 12:00–19:00
+      Центр «Грани Жизни» · 14:00–19:00
     </p>
     <a href="https://t.me/ВАША_ССЫЛКА" class="btn-primary" style="margin-bottom:16px;"><span>Написать и забронировать →</span></a>
     <p class="cta-contact">
@@ -1002,7 +1003,7 @@
     <div class="footer-brand">Грани Жизни</div>
     <div class="footer-info">
       Форум предпринимателей «Грани Возможностей»<br>
-      24 апреля 2025 · 12:00–19:00
+      24 апреля 2025 · 14:00–19:00
     </div>
     <div class="footer-address">📍 Симферополь, Лесхозная 3Б</div>
   </div>
